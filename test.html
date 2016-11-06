@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>node-segment: Test page for web version</title>
+	<script src="dicts.js"></script>
+	<script src="node-segment-web.js"></script>
+</head>
+<body>		
+
+	<script>
+		window.onload = function() {
+			var segment = new (NODE_SEGMENT.Segment)(),
+					text = '这是一个基于Node.js的中文分词模块。',
+					result;
+
+			segment.useDefault();
+
+			result = segment.doSegment(text, {
+			  simple: true
+			});
+
+			console.log(result);
+		}	
+	</script>
+</body>
+</html>
