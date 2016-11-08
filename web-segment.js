@@ -1,15 +1,15 @@
-var NODE_SEGMENT = (function () {
+var WebSegment = (function () {
 
 	/*///////////////////////////////////////////////////////////////////////////
 	lib/module/CHS_NAMES.js
-	///////////////////////////////////////////////////////////////////////////*/	
+	///////////////////////////////////////////////////////////////////////////*/
 
 	'use strict';
 
 	/**
 	 * 中文姓
 	 */
-	 
+
 	// 单姓
 	var list_FAMILY_NAME_1 = [
 	  //有明显歧义的姓氏
@@ -17,17 +17,17 @@ var NODE_SEGMENT = (function () {
 	  '夏','钟','田','任','方','石','熊','白','毛','江','史','候','龙','万','段',
 	  '雷','钱','汤','易','常','武','赖','文', '查',
 	  //没有明显歧义的姓氏
-	  '赵', '肖', '孙', '李', '吴', '郑', '冯', '陈', '褚', '卫', '蒋', '沈', 
+	  '赵', '肖', '孙', '李', '吴', '郑', '冯', '陈', '褚', '卫', '蒋', '沈',
 	  '韩', '杨', '朱', '秦', '尤', '许', '何', '吕', '施', '桓', '孔', '曹',
 	  '严', '华', '金', '魏', '陶', '姜', '戚', '谢', '邹', '喻', '柏', '窦',
-	  '苏', '潘', '葛', '奚', '范', '彭', '鲁', '韦', '昌', '俞', '袁', '酆', 
+	  '苏', '潘', '葛', '奚', '范', '彭', '鲁', '韦', '昌', '俞', '袁', '酆',
 	  '鲍', '唐', '费', '廉', '岑', '薛', '贺', '倪', '滕', '殷', '罗', '毕',
 	  '郝', '邬', '卞', '康', '卜', '顾', '孟', '穆', '萧', '尹', '姚', '邵',
 	  '湛', '汪', '祁', '禹', '狄', '贝', '臧', '伏', '戴', '宋', '茅', '庞',
 	  '纪', '舒', '屈', '祝', '董', '梁', '杜', '阮', '闵', '贾', '娄', '颜',
 	  '郭', '邱', '骆', '蔡', '樊', '凌', '霍', '虞', '柯', '昝', '卢', '柯',
 	  '缪', '宗', '丁', '贲', '邓', '郁', '杭', '洪', '崔', '龚', '嵇', '邢',
-	  '滑', '裴', '陆', '荣', '荀', '惠', '甄', '芮', '羿', '储', '靳', '汲', 
+	  '滑', '裴', '陆', '荣', '荀', '惠', '甄', '芮', '羿', '储', '靳', '汲',
 	  '邴', '糜', '隗', '侯', '宓', '蓬', '郗', '仲', '栾', '钭', '历', '戎',
 	  '刘', '詹', '幸', '韶', '郜', '黎', '蓟', '溥', '蒲', '邰', '鄂', '咸',
 	  '卓', '蔺', '屠', '乔', '郁', '胥', '苍', '莘', '翟', '谭', '贡', '劳',
@@ -42,7 +42,7 @@ var NODE_SEGMENT = (function () {
 	  '尉迟', '公羊', '澹台','公冶', '宗政', '濮阳','淳于', '单于', '太叔',
 	  '申屠', '公孙', '仲孙','轩辕', '令狐', '徐离','宇文', '长孙', '慕容',
 	  '司徒', '司空', '万俟'];
-	  
+
 	// 双字姓名第一个字
 	var list_DOUBLE_NAME_1 = [
 	  '阿','建','小','晓','文','志','国','玉','丽','永','海','春','金','明',
@@ -60,8 +60,8 @@ var NODE_SEGMENT = (function () {
 	  '平','全','阳','吉','茂','彦','诗','洁','润','承','治','焕','如','君',
 	  '增','善','希','根','应','勇','宜','守','会','凯','育','湘','凌','本',
 	  '敬','博','延','乐','三','二', '四', '五', '六', '七','八', '九', '十'];
-	  
-	// 双字姓名第二个字 
+
+	// 双字姓名第二个字
 	var list_DOUBLE_NAME_2 = [
 	  '华','平','明','英','军','林','萍','芳','玲','红','生','霞','梅','文',
 	  '荣','珍','兰','娟','峰','琴','云','辉','东','龙','敏','伟','强','丽',
@@ -78,7 +78,7 @@ var NODE_SEGMENT = (function () {
 	  '栋','凯','颖','鸣','丰','瑞','奎','立','堂','威','雪','鸿','晶','桂',
 	  '凡','娣','先','洲','毅','雅','月','旭','田','晖','方','恒','亚','泽',
 	  '风','银','高','贞','九','薇'];
-	  
+
 	// 单字姓名
 	var list_SINGLE_NAME = [
 	  '家','民','敏','伟','勇','军','斌','静','丽','涛','芳','杰','萍','强',
@@ -102,7 +102,7 @@ var NODE_SEGMENT = (function () {
 			FAMILY_NAME_2 = {},
 			DOUBLE_NAME_1 = {},
 			DOUBLE_NAME_2 = {},
-			SINGLE_NAME = {};	  
+			SINGLE_NAME = {};
 
 	function p (a, f, n) {
 	  a.forEach(function (v) {
@@ -261,8 +261,8 @@ var NODE_SEGMENT = (function () {
 	 *
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
-	 
-	var debug = console.log; 
+
+	var debug = console.log;
 
 	var WildcardTokenizer = (function() {
 
@@ -366,9 +366,9 @@ var NODE_SEGMENT = (function () {
 	 *
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
-	 
-	var debug = console.log; 
-	
+
+	var debug = console.log;
+
 	var PunctuationTokenizer = (function() {
 
 		/**
@@ -464,7 +464,7 @@ var NODE_SEGMENT = (function () {
 		    cur += isMatch === false ? 1 : w.length;
 		    isMatch = false;
 		  }
-		  
+
 		  return ret;
 		};
 
@@ -522,7 +522,7 @@ var NODE_SEGMENT = (function () {
 		var splitForeign = function (text, cur) {
 		  if (isNaN(cur)) cur = 0;
 		  var ret = [];
-		  
+
 		  // 取第一个字符的ASCII码
 		  var lastcur = 0;
 		  var lasttype = 0;
@@ -534,7 +534,7 @@ var NODE_SEGMENT = (function () {
 		  // 字母 lasttype = POSTAG.A_NX
 		  else if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) lasttype = POSTAG.A_NX;
 		  else lasttype = POSTAG.UNK;
-		  
+
 		  for (var i = 1; i < text.length; i++) {
 		    var c = text.charCodeAt(i);
 		    // 全角数字或字母
@@ -573,7 +573,7 @@ var NODE_SEGMENT = (function () {
 		  var nw = {w: text.substr(lastcur, i - lastcur)};
 		  if (lasttype !== POSTAG.UNK) nw.p = lasttype;
 		  ret.push(nw);
-		  
+
 		  // debug(ret);
 		  return ret;
 		};
@@ -591,9 +591,9 @@ var NODE_SEGMENT = (function () {
 /*///////////////////////////////////////////////////////////////////////////
 	lib/module/DictTokenizer.js
 	///////////////////////////////////////////////////////////////////////////*/
-	
+
 	var DictTokenizer = (function() {
-		
+
 		var this_segment;
 
 		/**
@@ -611,7 +611,7 @@ var NODE_SEGMENT = (function () {
 		 *
 		 * @author 老雷<leizongmin@gmail.com>
 		 */
-		 		 
+
 
 		/**
 		 * 对未识别的单词进行分词
@@ -684,7 +684,7 @@ var NODE_SEGMENT = (function () {
 		    }
 		    cur++;
 		  }
-		  
+
 		  return filterWord(ret, preword, text);
 		};
 		//debug(matchWord('长春市长春药店'));
@@ -700,11 +700,11 @@ var NODE_SEGMENT = (function () {
 		var filterWord = function (words, preword, text) {
 		  var TABLE = this_segment.getDict('TABLE');
 		  var ret = [];
-		  
+
 		  // 将单词按位置分组
 		  var wordpos = getPosInfo(words, text);
 		  //debug(wordpos);
-		  
+
 		  // 使用类似于MMSG的分词算法
 		  // 找出所有分词可能，主要根据一下几项来评价：
 		  // x、词数量最少；
@@ -716,7 +716,7 @@ var NODE_SEGMENT = (function () {
 		  var chunks = getChunks(wordpos, 0, text);
 		  //debug(chunks);
 		  var assess = [];  // 评价表
-		  
+
 		  // 对各个分支就行评估
 		  for (var i = 0, chunk; chunk = chunks[i]; i++) {
 		    assess[i] = {x: chunk.length, a:0, b:0, c:0, d:0}
@@ -724,7 +724,7 @@ var NODE_SEGMENT = (function () {
 		    var sp = text.length / chunk.length;
 		    // 句子经常包含的语法结构
 		    var has_D_V = false;  // 是否包含动词
-		    
+
 		    // 遍历各个词
 		    if (preword) {
 		      var prew = {w: preword.w, p: preword.p, f: preword.f}
@@ -735,7 +735,7 @@ var NODE_SEGMENT = (function () {
 		      if (w.w in TABLE) {
 		        w.p = TABLE[w.w].p;
 		        assess[i].a += w.f;   // 总词频
-		        
+
 		        // ================ 检查语法结构 ===================
 		        if (prew) {
 		          // 如果上一个词是数词且当前词是量词（单位），则加分
@@ -763,7 +763,7 @@ var NODE_SEGMENT = (function () {
 		            assess[i].d++;
 		          }
 		          // 如果是 方位词 + 数量词，则加分
-		          if ((prew.p & POSTAG.D_F) > 0 && 
+		          if ((prew.p & POSTAG.D_F) > 0 &&
 		            ((w.p & POSTAG.A_M > 0) || w.p & POSTAG.D_MQ > 0)) {
 		            //debug(prew, w);
 		            assess[i].d++;
@@ -805,15 +805,15 @@ var NODE_SEGMENT = (function () {
 		    }
 		    // 如果句子中包含了至少一个动词
 		    if (has_D_V === false)  assess[i].d -= 0.5;
-		    
+
 		    assess[i].a = assess[i].a / chunk.length;
 		    assess[i].b = assess[i].b / chunk.length;
 		  }
-		  
+
 		  // 计算排名
 		  var top = getTops(assess);
 		  var currchunk = chunks[top];
-		  
+
 		  // 剔除不能识别的词
 		  for (var i = 0, word; word = currchunk[i]; i++) {
 		    if (!(word.w in TABLE)) {
@@ -821,7 +821,7 @@ var NODE_SEGMENT = (function () {
 		    }
 		  }
 		  ret = currchunk;
-		  
+
 		  //debug(ret);
 		  return ret;
 		};
@@ -848,7 +848,7 @@ var NODE_SEGMENT = (function () {
 		      wordpos[i] = [{w: text.charAt(i), c: i, f: 0}];
 		    }
 		  }
-		      
+
 		  return wordpos;
 		};
 
@@ -900,7 +900,7 @@ var NODE_SEGMENT = (function () {
 		    if (ass.x > top.x) top.x = ass.x;  // 取最大单词数量
 		  }
 		  //debug(top);
-		  
+
 		  // 评估排名
 		  var tops = [];
 		  for (var i = 0, ass; ass = assess[i]; i++) {
@@ -918,7 +918,7 @@ var NODE_SEGMENT = (function () {
 		    //debug(tops[i]);debug('---');
 		  }
 		  //debug(tops.join('  '));
-		  
+
 		  // 取分数最高的
 		  var curri = 0;
 		  var maxs = tops[0];
@@ -958,7 +958,7 @@ var NODE_SEGMENT = (function () {
 	/*///////////////////////////////////////////////////////////////////////////
 	lib/module/ChsNameTokenizer.js
 	///////////////////////////////////////////////////////////////////////////*/
-	
+
 	var ChsNameTokenizer = (function() {
 
 		/**
@@ -1066,7 +1066,7 @@ var NODE_SEGMENT = (function () {
 	/*///////////////////////////////////////////////////////////////////////////
 	lib/module/EmailOptimizer.js
 	///////////////////////////////////////////////////////////////////////////*/
-	
+
 	var EmailOptimizer = (function() {
 
 		/**
@@ -1190,7 +1190,7 @@ var NODE_SEGMENT = (function () {
 	/*///////////////////////////////////////////////////////////////////////////
 	lib/module/ChsNameOptimizer.js
 	///////////////////////////////////////////////////////////////////////////*/
-	
+
 	var ChsNameOptimizer = (function() {
 
 		/**
@@ -1211,7 +1211,7 @@ var NODE_SEGMENT = (function () {
 		var doOptimize = function (words) {
 		  //debug(words);
 		  var i = 0;
-		  
+
 		  /* 第一遍扫描 */
 		  while (i < words.length) {
 		    var word = words[i];
@@ -1224,22 +1224,22 @@ var NODE_SEGMENT = (function () {
 		        words.splice(i, 2, {
 		          w:  word.w + nextword.w,
 		          p:  POSTAG.A_NR
-		        }); 
+		        });
 		        i++;
 		        continue;
 		      }
-		      
+
 		      // 如果是 姓 + 名（2字以内）
 		      if ((word.w in FAMILY_NAME_1 || word.w in FAMILY_NAME_2) &&
 		      ((nextword.p & POSTAG.A_NR) > 0 && nextword.w.length <= 2)) {
 		        words.splice(i, 2, {
 		          w:  word.w + nextword.w,
 		          p:  POSTAG.A_NR
-		        }); 
+		        });
 		        i++;
 		        continue;
 		      }
-		      
+
 		      // 如果相邻两个均为单字且至少有一个字是未识别的，则尝试判断其是否为人名
 		      if (!word.p || !nextword.p) {
 		        if ((word.w in SINGLE_NAME && word.w == nextword.w) ||
@@ -1273,11 +1273,11 @@ var NODE_SEGMENT = (function () {
 		        });
 		      }
 		    }
-		    
+
 		    // 移到下一个单词
 		    i++;
 		  }
-		  
+
 		  /* 第二遍扫描 */
 		  i = 0;
 		  while (i < words.length) {
@@ -1295,11 +1295,11 @@ var NODE_SEGMENT = (function () {
 		        continue;
 		      }
 		    }
-		    
+
 		    // 移到下一个单词
 		    i++;
 		  }
-		  
+
 		  return words;
 		};
 
@@ -1344,14 +1344,14 @@ var NODE_SEGMENT = (function () {
 		  }
 		  // 合并相邻的能组成一个单词的两个词
 		  var TABLE = this_segment.getDict('TABLE');
-		  
+
 		  var i = 0;
 		  var ie = words.length - 1;
 		  while (i < ie) {
 		    var w1 = words[i];
 		    var w2 = words[i + 1];
 		    //debug(w1.w + ', ' + w2.w);
-		    
+
 		    // ==========================================
 		    // 能组成一个新词的(词性必须相同)
 		    var nw = w1.w + w2.w;
@@ -1363,7 +1363,7 @@ var NODE_SEGMENT = (function () {
 		      ie--;
 		      continue;
 		    }
-		    
+
 		    // 形容词 + 助词 = 形容词，如： 不同 + 的 = 不同的
 		    if ((w1.p & POSTAG.D_A) > 0 && (w2.p & POSTAG.D_U)) {
 		      words.splice(i, 2, {
@@ -1431,11 +1431,11 @@ var NODE_SEGMENT = (function () {
 		      ie -= i2 - 1;
 		      continue;
 		    }
-		    
+
 		    // 移到下一个词
 		    i++;
 		  }
-		  
+
 		  // 针对组合数字后无法识别新组合的数字问题，需要重新扫描一次
 		  return is_not_first === true ? words : doOptimize(words, true);
 		};
@@ -1480,21 +1480,21 @@ var NODE_SEGMENT = (function () {
       }
       // 合并相邻的能组成一个单词的两个词
       var TABLE = this_segment.getDict('TABLE');
-      
+
       var i = 0;
       var ie = words.length - 1;
       while (i < ie) {
         var w1 = words[i];
         var w2 = words[i + 1];
         //debug(w1.w + ', ' + w2.w);
-        
+
         if ((w1.p & POSTAG.A_M) > 0) {
           // =========================================
           // 日期时间组合   数字 + 日期单位，如 “2005年"
           if (w2.w in DATETIME) {
             var nw = w1.w + w2.w;
             var len = 2;
-            // 继续搜索后面连续的日期时间描述，必须符合  数字 + 日期单位 
+            // 继续搜索后面连续的日期时间描述，必须符合  数字 + 日期单位
             while (true) {
               var w1 = words[i + len];
               var w2 = words[i + len + 1];
@@ -1514,11 +1514,11 @@ var NODE_SEGMENT = (function () {
           }
           // =========================================
         }
-        
+
         // 移到下一个词
         i++;
       }
-      
+
       return words;
     };
 
@@ -1550,8 +1550,8 @@ var NODE_SEGMENT = (function () {
 	/**
 	 * 单词类型
 	 */
-	 
-	var POSTAG = {}; 
+
+	var POSTAG = {};
 
 	POSTAG.D_A  = 0x40000000; // 形容词 形语素
 	POSTAG.D_B  = 0x20000000; // 区别词 区别语素
@@ -1659,12 +1659,12 @@ var NODE_SEGMENT = (function () {
 	 *
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
-	 
+
 	/**
 	 * 分词模块管理器
 	*
 	* @param {Segment} 分词接口
-	*/ 
+	*/
 	var Tokenizer = function (segment) {
 	  this.segment = segment;
 	};
@@ -1701,12 +1701,12 @@ var NODE_SEGMENT = (function () {
 	 *
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
-	 
+
 	/**
 	 * 优化模块管理器
 	 *
 	 * @param {Segment} 分词接口
-	 */ 
+	 */
 	var Optimizer = function (segment) {
 	  this.segment = segment;
 	};
