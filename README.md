@@ -1,7 +1,7 @@
 # web-segment
 Port of leizongmin's node-segment module for web
 
-### Usage
+### Example Usage
 
 ```javascript
 var text = '这是一个基于Node.js的中文分词模块。';
@@ -38,3 +38,6 @@ returns -
   { w: '分词', p: 4096 },
   { w: '模块', p: 1048576 } ]
 ```
+
+### More options
+Refer to https://github.com/leizongmin/node-segment
