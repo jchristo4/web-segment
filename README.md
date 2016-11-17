@@ -1,5 +1,5 @@
 # web-segment
-Port of leizongmin's node-segment module for web
+Port of [leizongmin](https://github.com/leizongmin)'s [node-segment](https://github.com/leizongmin/node-segment) module for web
 
 ### Example Usage
 
