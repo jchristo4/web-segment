@@ -9,18 +9,18 @@
 <body>
 
 	<script>
-		window.onload = function() {
-			var segment = new WebSegment.Segment(),
-					text = '这是一个基于Node.js的中文分词模块。',
-					result;
+	  window.onload = function() {
+      var segment = new WebSegment.Segment(),
+          text = '这是一个基于Node.js的中文分词模块。',
+          result;
 
-			segment.useDefault();
+      segment.useDefault();
 
-			result = segment.doSegment(text, {
-			  stripPunctuation: true
-			});
+      result = segment.doSegment(text, {
+        stripPunctuation: true
+      });
 
-			console.log(result);
+      console.log(result);
 		}
 	</script>
 </body>
